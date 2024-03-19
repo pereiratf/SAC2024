@@ -33,6 +33,10 @@ public partial class jogador : Area2D
 		ray.ForceRaycastUpdate();
 		if (!ray.IsColliding()) {
 			Position += direcao * area_quadrado;
+		} else {
+			if (ray.GetCollider() is Area2D) {
+				GD.Print("Area2D bloqueando o caminho.");
+			}
 		}
 		
 
