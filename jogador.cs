@@ -35,7 +35,12 @@ public partial class jogador : Area2D
 			Position += direcao * area_quadrado;
 		} else {
 			if (ray.GetCollider() is Area2D) {
-				GD.Print("Area2D bloqueando o caminho.");
+				Area2D colisor = ray.GetCollider() as Area2D;
+				if ((bool)colisor.Call("Empurrar", direcao, area_quadrado)) {
+					Position += direcao * area_quadrado;
+				}
+				
+				//GD.Print("Area2D bloqueando o caminho.");
 			}
 		}
 		
